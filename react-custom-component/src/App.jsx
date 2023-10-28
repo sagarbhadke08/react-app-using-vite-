@@ -1,12 +1,21 @@
 // import coreComponentImage from './assets/components.png';
+import { useState } from "react";
 import { CORE_CONCEPTS } from "./data.js";
 import Header from "./components/Header/Header.jsx";
 import CoreConcepts from "./components/Coreconcepts.jsx";
 import TabButton from "./components/TabButton.jsx";
 
 function App() {
+
+  let tabContent = 'Please Click the button'
+   
+  
+
   function handleSelect(selectedButton) {
-    console.log(selectedButton);
+  
+    // console.log(selectedButton);
+    tabContent=selectedButton;
+    console.log(tabContent)
   }
 
   return (
@@ -54,6 +63,8 @@ function App() {
             <TabButton onSelect={() => handleSelect("Props")}>Props</TabButton>
             <TabButton onSelect={() => handleSelect("State")}>State</TabButton>
           </menu>
+            {tabContent}
+
         </section>
       </main>
     </div>

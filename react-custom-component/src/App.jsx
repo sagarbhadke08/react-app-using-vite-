@@ -17,6 +17,18 @@ function App() {
     // console.log(selectedTopic);
   }
 
+  let  tabContent = <p>Please Select Topic</p>;
+
+  if(selectedTopic){
+    tabContent = <div id="tab-content">
+    <h3>{EXAMPLES[selectedTopic].title}</h3>
+    <p>{EXAMPLES[selectedTopic].description}</p>
+    <pre>
+      <code>{EXAMPLES[selectedTopic].code}</code>
+    </pre>
+  </div>;
+  }
+
   return (
     <div>
       <Header />
@@ -75,13 +87,14 @@ function App() {
             </div>
           ) : null} */}
 
-          {!selectedTopic ?<p>Please Select Topic</p>: (<div id="tab-content">
+          {/* {!selectedTopic ?<p>Please Select Topic</p>: (<div id="tab-content">
               <h3>{EXAMPLES[selectedTopic].title}</h3>
               <p>{EXAMPLES[selectedTopic].description}</p>
               <pre>
                 <code>{EXAMPLES[selectedTopic].code}</code>
               </pre>
-            </div>)}
+            </div>)} */}
+          {tabContent}
         </section>
       </main>
     </div>

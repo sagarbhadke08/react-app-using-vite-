@@ -8,13 +8,25 @@ function App() {
   // const stateArray = useState('Please click the button');
   // let tabContent = "Please Click the button";
 
-  const [selectedTopic, setSelectedTopic] = useState('components');
+  const [selectedTopic, setSelectedTopic] = useState("");
 
   function handleSelect(selectedButton) {
     // console.log(selectedButton);
     setSelectedTopic(selectedButton);
     // tabContent = selectedButton;
     // console.log(selectedTopic);
+  }
+
+  let  tabContent = <p>Please Select Topic</p>;
+
+  if(selectedTopic){
+    tabContent = <div id="tab-content">
+    <h3>{EXAMPLES[selectedTopic].title}</h3>
+    <p>{EXAMPLES[selectedTopic].description}</p>
+    <pre>
+      <code>{EXAMPLES[selectedTopic].code}</code>
+    </pre>
+  </div>;
   }
 
   return (
@@ -63,13 +75,26 @@ function App() {
             <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
           </menu>
           {/* {selectedTopic} */}
-          <div id="tab-content">
-            <h3>{EXAMPLES[selectedTopic].title}</h3>
-            <p>{EXAMPLES[selectedTopic].description}</p>
-            <pre>
-              <code>{EXAMPLES[selectedTopic].code}</code>
-            </pre>
-          </div>
+          {/* {!selectedTopic ? <p>Please Select Topic</p> : null}
+
+          {selectedTopic ? (
+            <div id="tab-content">
+              <h3>{EXAMPLES[selectedTopic].title}</h3>
+              <p>{EXAMPLES[selectedTopic].description}</p>
+              <pre>
+                <code>{EXAMPLES[selectedTopic].code}</code>
+              </pre>
+            </div>
+          ) : null} */}
+
+          {/* {!selectedTopic ?<p>Please Select Topic</p>: (<div id="tab-content">
+              <h3>{EXAMPLES[selectedTopic].title}</h3>
+              <p>{EXAMPLES[selectedTopic].description}</p>
+              <pre>
+                <code>{EXAMPLES[selectedTopic].code}</code>
+              </pre>
+            </div>)} */}
+          {tabContent}
         </section>
       </main>
     </div>

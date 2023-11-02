@@ -17,26 +17,29 @@ function App() {
     // console.log(selectedTopic);
   }
 
-  let  tabContent = <p>Please Select Topic</p>;
+  let tabContent = <p>Please Select Topic</p>;
 
-  if(selectedTopic){
-    tabContent = <div id="tab-content">
-    <h3>{EXAMPLES[selectedTopic].title}</h3>
-    <p>{EXAMPLES[selectedTopic].description}</p>
-    <pre>
-      <code>{EXAMPLES[selectedTopic].code}</code>
-    </pre>
-  </div>;
+  if (selectedTopic) {
+    tabContent = (
+      <div id="tab-content">
+        <h3>{EXAMPLES[selectedTopic].title}</h3>
+        <p>{EXAMPLES[selectedTopic].description}</p>
+        <pre>
+          <code>{EXAMPLES[selectedTopic].code}</code>
+        </pre>
+      </div>
+    );
   }
 
   return (
-    <div>
+    <>
       <Header />
 
-      <main>
+      <main>   
         <section id="core-concepts">
           <h2>Time to get started!</h2>
           <ul>
+            {CORE_CONCEPTS.map((conceptItem) => ( <CoreConcepts key={conceptItem.title} {...conceptItem} />))}
             {/* <CoreConcepts
               title={CORE_CONCEPTS[0].title}
               description={CORE_CONCEPTS[0].description}
@@ -48,10 +51,10 @@ function App() {
               description={CORE_CONCEPTS[1].description}
               image={CORE_CONCEPTS[1].image}
             /> } */}
-            <CoreConcepts {...CORE_CONCEPTS[0]} />
+            {/* <CoreConcepts {...CORE_CONCEPTS[0]} />
             <CoreConcepts {...CORE_CONCEPTS[1]} />
             <CoreConcepts {...CORE_CONCEPTS[2]} />
-            <CoreConcepts {...CORE_CONCEPTS[3]} />
+            <CoreConcepts {...CORE_CONCEPTS[3]} /> */}
             {/* <CoreConcepts
               title={CORE_CONCEPTS[2].title}
               description={CORE_CONCEPTS[2].description}  
@@ -67,12 +70,30 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton onSelect={() => handleSelect("components")}>
+            <TabButton
+              isSelected={selectedTopic === "components"}
+              onSelect={() => handleSelect("components")}
+            >
               Component
             </TabButton>
-            <TabButton onSelect={() => handleSelect("jsx")}>JSX</TabButton>
-            <TabButton onSelect={() => handleSelect("props")}>Props</TabButton>
-            <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
+            <TabButton
+              isSelected={selectedTopic === "jsx"}
+              onSelect={() => handleSelect("jsx")}
+            >
+              JSX
+            </TabButton>
+            <TabButton
+              isSelected={selectedTopic === "props"}
+              onSelect={() => handleSelect("props")}
+            >
+              Props
+            </TabButton>
+            <TabButton
+              isSelected={selectedTopic === "state"}
+              onSelect={() => handleSelect("state")}
+            >
+              State
+            </TabButton>
           </menu>
           {/* {selectedTopic} */}
           {/* {!selectedTopic ? <p>Please Select Topic</p> : null}
@@ -97,7 +118,7 @@ function App() {
           {tabContent}
         </section>
       </main>
-    </div>
+    </>
   );
 }
 

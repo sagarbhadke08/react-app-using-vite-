@@ -1,6 +1,6 @@
 import { CORE_CONCEPTS } from "../data.js";
 import Coreconcept from './Coreconcept.jsx'
-export default function CoreConcepts() {
+export default function Coreconcepts() {
   return (
     <section id="core-concepts">
       <h2>Time to get started!</h2>

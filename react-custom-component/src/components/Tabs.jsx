@@ -1,6 +1,6 @@
 
 
-export default function Tabs({children}){
+export default function Tabs({children , selectedTopic, onSelectTab}){
 
     return<>
     

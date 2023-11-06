@@ -32,35 +32,43 @@ export default function Examples() {
   }
 
   return (
-    <Section title ="Example" id="examples">
+    <Section title="Example" id="examples">
       {/* <h2>Examples</h2> */}
-      <Tabs> {tabContent}</Tabs>
-      <menu>
-        <TabButton
-          isSelected={selectedTopic === "components"}
-          onClick={() => handleSelect("components")}
-        >
-          Component
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === "jsx"}
-          onClick={() => handleSelect("jsx")}
-        >
-          JSX
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === "props"}
-          onClick={() => handleSelect("props")}
-        >
-          Props
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === "state"}
-          onClick={() => handleSelect("state")}
-        >
-          State
-        </TabButton>
-      </menu>
+      <Tabs
+        buttons={
+          <>
+            <menu>
+              <TabButton
+                isSelected={selectedTopic === "components"}
+                onClick={() => handleSelect("components")}
+              >
+                Component
+              </TabButton>
+              <TabButton
+                isSelected={selectedTopic === "jsx"}
+                onClick={() => handleSelect("jsx")}
+              >
+                JSX
+              </TabButton>
+              <TabButton
+                isSelected={selectedTopic === "props"}
+                onClick={() => handleSelect("props")}
+              >
+                Props
+              </TabButton>
+              <TabButton
+                isSelected={selectedTopic === "state"}
+                onClick={() => handleSelect("state")}
+              >
+                State
+              </TabButton>
+            </menu>
+          </>
+        }
+      >
+        {tabContent}
+      </Tabs>
+
       {/* {selectedTopic} */}
       {/* {!selectedTopic ? <p>Please Select Topic</p> : null}
 
@@ -81,7 +89,6 @@ export default function Examples() {
                 <code>{EXAMPLES[selectedTopic].code}</code>
               </pre>
             </div>)} */}
-     
     </Section>
   );
 }
